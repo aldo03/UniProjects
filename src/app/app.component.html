@@ -1,3 +1,76 @@
-<h1>
-  {{title}}
-</h1>
+<nav id="navbar" class="navbar navbar-fixed-top navbar-expand-md navbar-light bg-faded">
+  <div class="container">
+    <a class="navelem navbar-brand" routerLink="/home">UniProjects</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+<form class="form-inline my-2 my-lg-0">
+  <input class="form-control mr-sm-2" type="text" placeholder="Find project or student" id="searchInput">
+  <button class="homebtn btn my-2 my-sm-0" type="submit" (mousedown)="getInput();" [routerLink]="['/projects',  input, '0']">Search</button>
+</form>
+</li>
+<li class="nav-item">
+  <a class="navelem nav-link" routerLink="/departments">Departments</a>
+</li>
+<li class="nav-item">
+  <a href="#" class="navelem nav-link" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" id="login">Login</a>
+</li>
+        <!--<li class="nav-item">
+          <a href="#" (click)="logout();" class="nav-link" id="logout" style="display: none;">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" id="userelem" style="display: none;">User</a>
+        </li>-->
+
+        <li class="dropdown">
+          <a href="#" style="display: none;" class="navelem nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="userelem">User <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a (mousedown)="viewProfile();" [routerLink]="['/user-detail',  username]"  class="userelem nav-link" >View Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a [routerLink]="['/add-project']"  class="userelem nav-link">Add Project</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="nav-item">
+              <a href="#" (click)="logout();" class="userelem nav-link" id="logout" style="display: none;">Logout</a>
+            </li>
+          </ul>
+        </li>
+
+
+
+
+
+</ul>
+</div>
+</div>
+</nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="username" class="control-label">Username:</label>
+            <input type="text" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password:</label>
+            <input type="password" class="form-control" id="password">
+          </div>
+          <div class="form-group">
+            <label id="wrong" style="display: none;">Wrong username or password</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="homebtn btn btn-primary" (click)="login()" data-dismiss="modal">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

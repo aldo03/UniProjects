@@ -1,0 +1,44 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="project_card col-md-8">
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe class="embed-responsive-item" src="http://docs.google.com/gview?url=https://bitcoin.org/bitcoin.pdf&embedded=true" frameborder="0"></iframe>
+        </div>
+        <h1 class="my-3">{{project.title}}</h1>
+        <div class="row my-3">
+          <div class="chip" style="margin-left: 20px;" *ngFor="let author of project.authors; index as i">
+            <img src={{project.authorsPicture[i]}} alt="Contact Person"><a [routerLink]="['/user-detail',author]">{{author}}</a></div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+
+          <div class="chip"><a [routerLink]="['/projects',project.tags[0], '0']">{{project.tags[0]}}</a> <i class="fa fa-tag"></i> </div>
+          <div class="chip"><a [routerLink]="['/projects',project.tags[1], '0']">{{project.tags[1]}}</a>  <i class="fa fa-tag"></i> </div>
+          <div class="chip"><a [routerLink]="['/projects',project.tags[2], '0']">{{project.tags[2]}}</a>  <i class="fa fa-tag"></i> </div>
+        </div>
+        <h3 class="">Abstract</h3>
+        <p class="">{{project.abstract}}</p>
+        <h3 class="">Downloads</h3>
+        <p class="">{{project.dldesc}}</p>
+        <div *ngFor="let file of project.files">
+          <a href={{file}} download>   <i class="fa fa-file" ></i>   {{file.substring(file.lastIndexOf("/")+1,file.length)}}</a>
+        </div>
+
+
+      </div>
+      <div class="col-md-4">
+        <h3 class="" style="margin-top: 10px">Related Projects</h3>
+        <ul class="media-list p-0 my-4">
+          <a *ngFor="let relProject of relatedProjects" [routerLink]="['/project-detail', relProject.title, relProject.tags[0], relProject.tags[1], relProject.tags[2]]" id="medialist">
+            <li class="project_card-not-justified media my-3">
+              <div class="media-left">
+                <img class="media-object" src={{relProject.picture}} height="64" width="64"> </div>
+              <div class="media-body mx-3">
+                <h4 class="media-heading">{{relProject.title}}</h4> <p id="hidden"> {{relProject.department}}</p> </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

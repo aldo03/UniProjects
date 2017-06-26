@@ -1,0 +1,26 @@
+<div class="background-all py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="project_card-not-justified col-md-6">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div *ngFor="let school of schools" class="panel panel-default">
+            <div class="panel-heading p-1 my-2 bg-faded" style="border: none" role="tab">
+              <h4 class="panel-title">
+                <a class="dept-list-item" role="button" data-toggle="collapse" data-parent="#accordion" href="#{{school.name.split(' ').join('')}}" aria-expanded="true" aria-controls="collapseOne" >{{school.name}}</a>
+              </h4>
+            </div>
+            <div id="{{school.name.split(' ').join('')}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <ul class="list-group">
+                <li *ngFor="let department of school.departments" class="list-group-item">
+                  <a class="dept-list-item" [routerLink]="['/projects', department, '1']"><i class="fa fa-graduation-cap"></i> {{department}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>

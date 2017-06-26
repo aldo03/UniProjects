@@ -1,0 +1,160 @@
+
+
+<div class="py-2  section">
+  <div class="container">
+    <div class="row">
+      <div  id="results" style="display: none">
+        Search results for "Search"
+         </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngFor="let project of projects" class="py-2  section">
+  <div class="project_card container">
+    <div class="row">
+      <div class="col-md-3">
+        <a [routerLink]="['/project-detail', project.title, project.tags[0], project.tags[1], project.tags[2]]"><img src={{project.picture}} class="img-fluid img-thumbnail"></a> </div>
+      <div class="col-md-9">
+        <h2 class=""><a class="proj-title" [routerLink]="['/project-detail', project.title, project.tags[0], project.tags[1], project.tags[2]]">{{project.title}}</a></h2>
+        <h4 class="">{{project.department}}</h4>
+        <p class="hidden lead">{{project.abstract}} </p>
+        <div class="row my-3">
+          <div *ngFor="let author of project.authors; index as i" class="chip" style="margin-left: 20px;">
+            <img src={{project.authorsPicture[i]}} alt="Contact Person"><a [routerLink]="['/user-detail',author]">{{author}}</a>
+          </div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+          <div class="chip"><a [routerLink]="['/projects',project.tags[0], '0']">{{project.tags[0]}}</a> <i class="fa fa-tag"></i> </div>
+          <div class="chip"><a [routerLink]="['/projects',project.tags[1], '0']">{{project.tags[1]}}</a>  <i class="fa fa-tag"></i> </div>
+          <div class="chip"><a [routerLink]="['/projects',project.tags[2], '0']">{{project.tags[2]}}</a>  <i class="fa fa-tag"></i> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-projects-footer"></div>
+
+
+
+<!--
+
+<div class="py-5  section">
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" class="img-fluid img-thumbnail"> </div>
+      <div class="col-md-9">
+        <h2 class="">Project Name</h2>
+        <h4 class="">Department</h4>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+          pretium quis, sem. </p>
+        <div class="row my-3">
+          <div class="chip" style="margin-left: 20px;">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Claudio</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Berlo</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Brando</div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-5  section">
+  <div class="container" id="project_card">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" class="img-fluid img-thumbnail"> </div>
+      <div class="col-md-9">
+        <h2 class="">Project Name</h2>
+        <h4 class="">Department</h4>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+          pretium quis, sem. </p>
+        <div class="row my-3">
+          <div class="chip" style="margin-left: 20px;">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Claudio</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Berlo</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Brando</div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-5  section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" class="img-fluid img-thumbnail"> </div>
+      <div class="col-md-9">
+        <h2 class="">Project Name</h2>
+        <h4 class="">Department</h4>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+          pretium quis, sem. </p>
+        <div class="row my-3">
+          <div class="chip" style="margin-left: 20px;">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Claudio</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Berlo</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Brando</div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-5  section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" class="img-fluid img-thumbnail"> </div>
+      <div class="col-md-9">
+        <h2 class="">Project Name</h2>
+        <h4 class="">Department</h4>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+          pretium quis, sem. </p>
+        <div class="row my-3">
+          <div class="chip" style="margin-left: 20px;">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Claudio</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Berlo</div>
+          <div class="chip">
+            <img src="https://unsplash.imgix.net/photo-1421986527537-888d998adb74?w=1024&amp;q=50&amp;fm=jpg&amp;s=e633562a1da53293c4dc391fd41ce41d" alt="Contact Person">Brando</div>
+        </div>
+        <div class="row my-3" style="margin-left: 0px;">
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+          <div class="chip">Tag <i class="fa fa-fw fa-close"></i> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->

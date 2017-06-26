@@ -1,0 +1,47 @@
+
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>{{user.name}} {{user.surname}} </h1>
+        <label>@{{user.username}}</label>
+        <hr/>
+        <div class="row">
+          <div class="col-md-5">
+            <img class="img-fluid d-block" src="{{user.picture}}"> </div>
+          <div class="col-md-7">
+            <p class="" style="text-align: justify">{{user.history}}</p>
+          </div>
+        </div>
+        <hr/>
+        <h4 class="my-3">{{user.department}}</h4>
+        <h5 class="my-3">{{user.email}}</h5>
+        <div class="row my-3">
+          <a href="{{user.fb}}" id="fb" style="display: none">
+            <i class="facebook fa fa-facebook-square fa-3x mx-3" aria-hidden="true" ></i>
+          </a>
+          <a href="{{user.gplus}}"  id="gplus" style="display: none">
+            <i class="gplus fa fa-google-plus fa-3x mx-3" aria-hidden="true"></i>
+          </a>
+          <a href="{{user.linkedin}}"  id="linkedin" style="display: none">
+            <i class="linkedin fa fa-linkedin fa-3x mx-3" aria-hidden="true"></i>
+          </a>
+        </div>
+        <a  id="cv" style="display: none" href={{user.cv}} download>Curriculum Vitae</a>
+      </div>
+      <div class="col-md-4">
+        <h2 class="">Projects from this author</h2>
+        <ul class="media-list p-0 m-0">
+          <a *ngFor="let project of projects" [routerLink]="['/project-detail', project.title, project.tags[0], project.tags[1], project.tags[2]]" id="medialist" >
+            <li class="project_card-not-justified media my-3">
+              <div class="media-left">
+                <img class="media-object" src="{{project.picture}}" height="64" width="64"> </div>
+              <div class="media-body mx-3">
+                <h4 class="media-heading">{{project.title}}</h4> <p>{{project.department}}</p> </div>
+            </li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

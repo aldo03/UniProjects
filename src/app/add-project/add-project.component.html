@@ -1,0 +1,58 @@
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+
+
+      <div class="col-md-6">
+        <h1 class="">Add Project</h1>
+        <form>
+          <div class="form-group"> <label>Title *</label>
+            <input type="text" class="form-control" placeholder="Title" id="title"> </div>
+          <div class="form-group" id="authors"> <label>Authors *</label>
+            <div class="row">
+              <div class="col-md-10">
+                <input type="text" class="form-control" placeholder="Author 1" id="author1">
+              </div>
+              <div class="col-md-2">
+                <button class="btn form-control" (click)="addAuthorInput()"> <i class="fa fa-plus" aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group"> <label>Tags *</label>
+            <div class="row">
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tag 1" id="tag1">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tag 2" id="tag2">
+              </div>
+              <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Tag 3" id="tag3">
+              </div>
+            </div>
+          </div>
+          <div class="form-group"> <label>Department *</label>
+            <select class="form-control" id="department">
+              <option *ngFor="let dep of departments" value={{dep}}>{{dep}}</option>
+            </select> </div><div class="form-group"> <label>Picture *</label>
+          <input type="file" accept=".jpg, .png" class="form-control" placeholder="Upload picture" id="picture"> </div>
+          <div class="form-group"> <label>Presentation *</label>
+            <input type="file" accept=".pdf, .ppt" class="form-control" placeholder="presentation" id="presentation"> </div>
+          <div class="form-group"> <label>Abstract *</label>
+            <textarea class="form-control" rows="5" placeholder="Abstract" id="abstract"></textarea> </div>
+          <div class="form-group"> <label>Upload Files</label>
+            <input type="file" multiple class="form-control"  placeholder="Upload Files" id="files"> </div>
+          <div class="form-group"> <label>Downloads Description</label>
+            <textarea class="form-control" rows="5" placeholder="Description" required="" id="dldesc"></textarea> </div>
+          <div class="form-group"><label>* = Required fields</label></div>
+          <button (click)="addProject();" type="submit" class="homebtn btn btn-primary">Submit</button>
+        </form>
+      </div>
+
+      <div class="col-md-3"></div>
+
+    </div>
+
+  </div>
+</div>
