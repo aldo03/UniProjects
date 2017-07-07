@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
           document.getElementById("login").setAttribute("style", "display: none;");
           (<HTMLElement>document.getElementById("userelem")).innerHTML = 'Hi, '+user;
           document.getElementById("userelem").setAttribute("style", "display: visible;");
-          document.cookie = "user="+user;
+          localStorage.setItem("user", user);
         }
       });
     }
@@ -47,21 +47,20 @@ export class AppComponent implements OnInit{
   }
 
   viewProfile(){
-    this.username = document.cookie.slice(5, document.cookie.length);
+    this.username = localStorage.getItem("user");
   }
 
   logout(){
     document.getElementById("logout").setAttribute("style", "display: none;");
     document.getElementById("login").setAttribute("style", "display: visible;");
-    document.cookie = "user" + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    localStorage.removeItem("user");
   }
 
   ngOnInit(): void {
-    console.log(document.cookie);
-    if(document.cookie.startsWith("user",0)){
+    if( localStorage.getItem("user")!=null){
       document.getElementById("logout").setAttribute("style", "display: visible;");
       document.getElementById("login").setAttribute("style", "display: none;");
-      (<HTMLElement>document.getElementById("userelem")).innerHTML = 'Hi, '+document.cookie.slice(5, document.cookie.length);
+      (<HTMLElement>document.getElementById("userelem")).innerHTML = 'Hi, '+localStorage.getItem("user");
       document.getElementById("userelem").setAttribute("style", "display: visible;");
     }
   }
